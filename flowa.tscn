@@ -1,0 +1,164 @@
+[gd_scene load_steps=21 format=3 uid="uid://p4fkmp8qdb4d"]
+
+[ext_resource type="Script" path="res://Flowa.gd" id="1_tcdkk"]
+[ext_resource type="Texture2D" uid="uid://c8ftsnr8538fr" path="res://flowa.png" id="2_xmef0"]
+[ext_resource type="Texture2D" uid="uid://dgppycqcjlwko" path="res://skull_amulet.png" id="3_roisj"]
+[ext_resource type="AudioStream" uid="uid://ryaucmsm2nin" path="res://door-lock-43124.mp3" id="4_s3aiv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5k1li"]
+atlas = ExtResource("2_xmef0")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fck2g"]
+atlas = ExtResource("2_xmef0")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xqnjl"]
+atlas = ExtResource("2_xmef0")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8l2w"]
+atlas = ExtResource("2_xmef0")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2dcbx"]
+atlas = ExtResource("2_xmef0")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3kkv5"]
+atlas = ExtResource("2_xmef0")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cnu54"]
+atlas = ExtResource("2_xmef0")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ajptx"]
+atlas = ExtResource("2_xmef0")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1oi3b"]
+atlas = ExtResource("2_xmef0")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jelk6"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5k1li")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fck2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xqnjl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8l2w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2dcbx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3kkv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cnu54")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ajptx")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1oi3b")
+}],
+"loop": true,
+"name": &"reg",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_piwem"]
+size = Vector2(20, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35d6c"]
+atlas = ExtResource("3_roisj")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_glnoj"]
+atlas = ExtResource("3_roisj")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5vn7u"]
+atlas = ExtResource("3_roisj")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_djy4l"]
+atlas = ExtResource("3_roisj")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_okkfu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35d6c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_glnoj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5vn7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_djy4l")
+}],
+"loop": true,
+"name": &"moving",
+"speed": 10.0
+}]
+
+[node name="Flowa" type="CharacterBody2D"]
+z_index = 3
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("1_tcdkk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_jelk6")
+animation = &"move"
+autoplay = "reg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-6, -10)
+shape = SubResource("RectangleShape2D_piwem")
+
+[node name="Box" type="Area2D" parent="."]
+position = Vector2(15, -13)
+scale = Vector2(3.28, 2.84)
+collision_mask = 23
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Box"]
+position = Vector2(-6, 5)
+shape = SubResource("RectangleShape2D_piwem")
+
+[node name="skull_amulet" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_okkfu")
+animation = &"moving"
+autoplay = "moving"
+frame_progress = 0.886329
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_s3aiv")
+volume_db = 6.624
+
+[connection signal="area_entered" from="Box" to="." method="_on_box_area_entered"]
+[connection signal="body_entered" from="Box" to="." method="_on_box_body_entered"]
+[connection signal="body_exited" from="Box" to="." method="_on_box_body_exited"]

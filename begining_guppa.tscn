@@ -1,0 +1,78 @@
+[gd_scene load_steps=10 format=3 uid="uid://clwv3u2aspr1w"]
+
+[ext_resource type="Script" path="res://Begining_guppa.gd" id="1_tynj6"]
+[ext_resource type="Texture2D" uid="uid://c4tg62odd4ap1" path="res://Guppa.png" id="2_2mabw"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ut1ke"]
+atlas = ExtResource("2_2mabw")
+region = Rect2(256, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxonu"]
+atlas = ExtResource("2_2mabw")
+region = Rect2(0, 384, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ac1q"]
+atlas = ExtResource("2_2mabw")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kxtvg"]
+atlas = ExtResource("2_2mabw")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mt6nx"]
+atlas = ExtResource("2_2mabw")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j7glv"]
+atlas = ExtResource("2_2mabw")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wn2fn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ut1ke")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxonu")
+}],
+"loop": false,
+"name": &"blink",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ac1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kxtvg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mt6nx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j7glv")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[node name="Begining_guppa" type="Node2D"]
+script = ExtResource("1_tynj6")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(1.52, 1.48)
+mouse_filter = 0
+mouse_default_cursor_shape = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="VBoxContainer"]
+position = Vector2(19.7369, 16.8919)
+scale = Vector2(0.657895, 0.675676)
+sprite_frames = SubResource("SpriteFrames_wn2fn")
+animation = &"blink"
+
+[connection signal="gui_input" from="VBoxContainer" to="." method="_on_v_box_container_gui_input"]
+[connection signal="mouse_entered" from="VBoxContainer" to="." method="_on_v_box_container_mouse_entered"]

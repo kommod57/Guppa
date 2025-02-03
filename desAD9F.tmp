@@ -1,0 +1,140 @@
+[gd_scene load_steps=8 format=3 uid="uid://c8oyhf0fi1coo"]
+
+[ext_resource type="Texture2D" uid="uid://dgxsgsm6q3b7w" path="res://platforms.png" id="1_4a17k"]
+[ext_resource type="Script" path="res://designs.gd" id="1_koiud"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfltn"]
+size = Vector2(48.7488, 52.1707)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b1fxl"]
+atlas = ExtResource("1_4a17k")
+region = Rect2(0, 0, 2000, 2000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xutgv"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b1fxl")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d2c3q"]
+atlas = ExtResource("1_4a17k")
+region = Rect2(2000, 0, 2000, 2000)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_bdsmx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d2c3q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="level_designs" type="Node2D"]
+script = ExtResource("1_koiud")
+
+[node name="level_1" type="Node2D" parent="."]
+
+[node name="Object1" type="StaticBody2D" parent="level_1"]
+visible = false
+position = Vector2(1536, 1122)
+scale = Vector2(1.4, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="level_1/Object1"]
+position = Vector2(-230.714, -172)
+shape = SubResource("RectangleShape2D_kfltn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object1/CollisionShape2D3"]
+position = Vector2(9.28589, 84)
+sprite_frames = SubResource("SpriteFrames_xutgv")
+frame_progress = 1.0
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="level_1/Object1"]
+position = Vector2(-144.286, -243)
+shape = SubResource("RectangleShape2D_kfltn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object1/CollisionShape2D4"]
+position = Vector2(9.28589, 84)
+sprite_frames = SubResource("SpriteFrames_xutgv")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="level_1/Object1"]
+position = Vector2(-415, -407)
+scale = Vector2(8.77143, 1)
+shape = SubResource("RectangleShape2D_kfltn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object1/CollisionShape2D5"]
+position = Vector2(8.86531, 84)
+sprite_frames = SubResource("SpriteFrames_xutgv")
+
+[node name="Label" type="Label" parent="level_1/Object1"]
+offset_left = -707.857
+offset_top = -1013.0
+offset_right = -312.857
+offset_bottom = -971.0
+scale = Vector2(1.04182, 1.81628)
+theme_override_font_sizes/font_size = 30
+text = "Arrow keys/ WASD to move"
+horizontal_alignment = 1
+
+[node name="Object2" type="StaticBody2D" parent="level_1"]
+position = Vector2(1639, 1080)
+scale = Vector2(1.4, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="stair" type="CollisionPolygon2D" parent="level_1/Object2"]
+polygon = PackedVector2Array(-535.715, 35, -517.143, 19, -517.143, 64, -560.715, 65)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/stair"]
+position = Vector2(-531.429, 123)
+sprite_frames = SubResource("SpriteFrames_bdsmx")
+
+[node name="stair3" type="CollisionPolygon2D" parent="level_1/Object2"]
+position = Vector2(46.4287, -46)
+polygon = PackedVector2Array(-535.715, 35, -517.143, 19, -517.143, 64, -560.715, 65)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/stair3"]
+position = Vector2(-531.429, 123)
+sprite_frames = SubResource("SpriteFrames_bdsmx")
+
+[node name="stair4" type="CollisionPolygon2D" parent="level_1/Object2"]
+position = Vector2(89.2858, -89)
+polygon = PackedVector2Array(-535.715, 35, -517.143, 19, -517.143, 64, -560.715, 65)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/stair4"]
+position = Vector2(-531.429, 123)
+sprite_frames = SubResource("SpriteFrames_bdsmx")
+
+[node name="stair2" type="CollisionPolygon2D" parent="level_1/Object2"]
+position = Vector2(-449.286, 583)
+rotation = 1.5708
+polygon = PackedVector2Array(-535.715, 35, -517.143, 19, -517.143, 64, -560.715, 65)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/stair2"]
+position = Vector2(-531.429, 123)
+sprite_frames = SubResource("SpriteFrames_bdsmx")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="level_1/Object2"]
+position = Vector2(-571.429, -362)
+shape = SubResource("RectangleShape2D_kfltn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/CollisionShape2D4"]
+position = Vector2(9.28589, 84)
+sprite_frames = SubResource("SpriteFrames_xutgv")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="level_1/Object2"]
+position = Vector2(-485, 42)
+scale = Vector2(1, 1.64)
+shape = SubResource("RectangleShape2D_kfltn")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/CollisionShape2D5"]
+position = Vector2(9.28589, 84)
+sprite_frames = SubResource("SpriteFrames_xutgv")

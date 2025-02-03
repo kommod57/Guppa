@@ -1,0 +1,121 @@
+[gd_scene load_steps=13 format=3 uid="uid://dvimx7qdtx2v5"]
+
+[ext_resource type="PackedScene" uid="uid://cpor7cphqod1e" path="res://player.tscn" id="1_atsri"]
+[ext_resource type="Script" path="res://level_1.gd" id="1_uoyv4"]
+[ext_resource type="PackedScene" uid="uid://c8oyhf0fi1coo" path="res://designs.tscn" id="2_uw00j"]
+[ext_resource type="AudioStream" uid="uid://bw8l4aps5wgug" path="res://Still_Bittersweet.mp3" id="3_ejx5f"]
+[ext_resource type="PackedScene" uid="uid://bae5wq61kbgah" path="res://scared_guppa.tscn" id="4_0fi32"]
+[ext_resource type="PackedScene" uid="uid://2kvr81dwgbde" path="res://lever.tscn" id="7_6db1b"]
+[ext_resource type="PackedScene" uid="uid://p4fkmp8qdb4d" path="res://flowa.tscn" id="8_6t1g1"]
+[ext_resource type="PackedScene" uid="uid://dxftbk30hp8et" path="res://fanshy.tscn" id="9_a5xp6"]
+[ext_resource type="PackedScene" uid="uid://carf7d64ihlx6" path="res://rigid_paint.tscn" id="9_g2d8s"]
+[ext_resource type="PackedScene" uid="uid://di41qlvopt4x1" path="res://boss.tscn" id="10_n4q0g"]
+[ext_resource type="PackedScene" uid="uid://b5al3ra1ltrtd" path="res://shooter_guppa.tscn" id="11_u8035"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tr657"]
+size = Vector2(1176, 79)
+
+[node name="Level1" type="Node2D"]
+script = ExtResource("1_uoyv4")
+
+[node name="white_back" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_top = -17.0
+offset_right = 1164.0
+offset_bottom = 667.0
+scale = Vector2(1.44, 1.84)
+color = Color(0.443654, 0.544372, 0.818169, 1)
+
+[node name="green_back" type="ColorRect" parent="."]
+offset_left = 1.0
+offset_top = -17.0
+offset_right = 1164.0
+offset_bottom = 667.0
+scale = Vector2(1.44, 1.84)
+color = Color(0.708571, 1, 0.559643, 1)
+
+[node name="Node2D" parent="." instance=ExtResource("2_uw00j")]
+
+[node name="Borders" type="StaticBody2D" parent="."]
+position = Vector2(6, 1144)
+scale = Vector2(1.4, 1)
+collision_layer = 4
+collision_mask = 3
+
+[node name="Ground" type="CollisionShape2D" parent="Borders"]
+position = Vector2(580, 35)
+shape = SubResource("RectangleShape2D_tr657")
+
+[node name="ColorRect" type="ColorRect" parent="Borders/Ground"]
+offset_left = -583.0
+offset_top = -32.0
+offset_right = -543.0
+offset_bottom = 8.0
+scale = Vector2(29, 1.76)
+color = Color(0, 0, 0, 1)
+
+[node name="Ceiling" type="CollisionShape2D" parent="Borders"]
+position = Vector2(559.286, -1115)
+shape = SubResource("RectangleShape2D_tr657")
+
+[node name="ColorRect" type="ColorRect" parent="Borders/Ceiling"]
+offset_left = -583.0
+offset_top = -32.0
+offset_right = -543.0
+offset_bottom = 8.0
+scale = Vector2(29, 1.76)
+color = Color(0, 0, 0, 1)
+
+[node name="l_wall" type="CollisionShape2D" parent="Borders"]
+position = Vector2(-37.1429, -563)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_tr657")
+
+[node name="ColorRect" type="ColorRect" parent="Borders/l_wall"]
+offset_left = -583.0
+offset_top = -32.0
+offset_right = -543.0
+offset_bottom = 8.0
+scale = Vector2(29, 1.76)
+color = Color(0, 0, 0, 1)
+
+[node name="r_wall" type="CollisionShape2D" parent="Borders"]
+position = Vector2(1165.71, -559)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_tr657")
+
+[node name="ColorRect" type="ColorRect" parent="Borders/r_wall"]
+offset_left = -583.0
+offset_top = -32.0
+offset_right = -543.0
+offset_bottom = 8.0
+scale = Vector2(29, 1.76)
+color = Color(0, 0, 0, 1)
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_atsri")]
+position = Vector2(143, 0)
+collision_mask = 22
+
+[node name="scared_guppa" parent="." instance=ExtResource("4_0fi32")]
+position = Vector2(834, 663)
+
+[node name="level_1_music" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_ejx5f")
+
+[node name="exs" type="Node2D" parent="."]
+
+[node name="lever" parent="." instance=ExtResource("7_6db1b")]
+position = Vector2(812, 554)
+
+[node name="Flowa" parent="." instance=ExtResource("8_6t1g1")]
+position = Vector2(372, 1081)
+
+[node name="rigid_paint" parent="." instance=ExtResource("9_g2d8s")]
+
+[node name="fanshy" parent="." instance=ExtResource("9_a5xp6")]
+
+[node name="Boss" parent="." instance=ExtResource("10_n4q0g")]
+
+[node name="Shooter_guppa" parent="." instance=ExtResource("11_u8035")]
+
+[connection signal="x_position" from="rigid_paint" to="." method="_on_rigid_paint_x_position"]
