@@ -10,6 +10,7 @@ var gravity = 980
 func _ready():
 	first_time = false
 	if Global.level == 20 and Global.natural_level_progession == 0.2:
+		$metalic.play()
 		position = Vector2(600,770)
 		first_time = true
 		$AnimatedSprite2D.animation = 'excited_fill'
@@ -34,6 +35,7 @@ func _physics_process(delta):
 		if not $AnimatedSprite2D.is_playing():
 			first_time = false
 	if not first_time:
+		$AnimatedSprite2D.play()
 		if touch_con:
 			position.x += 100 * delta * convey_dir
 		if update:
@@ -52,6 +54,7 @@ func _physics_process(delta):
 				$AnimatedSprite2D.animation = 'right'
 			else:
 				$AnimatedSprite2D.animation = 'left'
+				
 			if special_powers:
 				velocity.x = direction * SPEED * 3
 			else:

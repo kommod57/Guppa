@@ -24,6 +24,7 @@ func _ready():
 		Global.nat_level = Global.level
 	await _make_guppas()
 	Global.boss1.stop()
+	Global.wind.stop()
 	Global.music_player1.stop()
 
 	var levels = ""
@@ -60,6 +61,7 @@ func _process(_delta):
 	if Input.is_action_just_pressed("special"):
 		Global.level = Global.nat_level
 		Global.music_player2.stop()
+		Global.player_death = false		
 		get_tree().change_scene_to_packed(start)
 	if Input.is_action_just_pressed("quit"):
 		get_tree().quit()
@@ -149,4 +151,5 @@ func _on_level_clicked(event, arg):
 			else:
 				Global.level = Global.nat_level
 			if not dontstart:
+				Global.player_death = false		
 				get_tree().change_scene_to_packed(start)

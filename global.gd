@@ -13,14 +13,16 @@ var filled = 0
 var sprite_evil_fill = 0
 
 #ui
-var level = 0
+var level = 21
 var nat_level = 0
 var lever_on = false
 var dangerous_particles = false
 var empty_bucket = false
 var natural_level_progession = 0.4
-
+var player_death = false
+var tree_positions = []
 #npc stuff
+
 var jumpy = false
 
 #level interface
@@ -29,10 +31,12 @@ var music_player1: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 var music_player2: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 var boss1: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 var boss2: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
+var wind: AudioStreamPlayer2D = AudioStreamPlayer2D.new()
 var stream1 = load("res://Still_Bittersweet.mp3")
 var stream2 = load("res://Long_Ago....mp3")
 var stream4 = load("res://Black_Bean.mp3")
 var stream3 = load("res://boss1.mp3")
+var stream5 = load("res://soft_wind.mp3")
 func _ready():
 	add_child(music_player1)
 	music_player1.stream = stream1
@@ -44,5 +48,7 @@ func _ready():
 	boss1.stream = stream3
 	add_child(boss2)
 	boss2.stream = stream4
+	add_child(wind)
+	wind.stream = stream5
 	
 

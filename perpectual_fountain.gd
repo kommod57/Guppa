@@ -32,13 +32,12 @@ var once = true
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if Global.natural_level_progession == 0.4 and Global.level == 20:
-		
 		if once:
+			$CollisionShape2D/drip.wait_time = 0.2
 			Global.filled = 0
-			$CollisionShape2D/drip.wait_time = 0.1
 			$CollisionShape2D.position = Vector2(0,-50)
 			$CollisionShape2D.rotation_degrees = -1
-			extras = await _build_up(7,0,200,-1)
+			extras = await _build_up(15,0,100,-1)
 			$CollisionShape2D.position = Vector2(600,650)
 			$CollisionShape2D.rotation_degrees = -1
 			once = false
@@ -48,6 +47,8 @@ func _process(_delta):
 var rng = RandomNumberGenerator.new()
 var ex_scene = load('res://excretion.tscn')
 func _on_drip_timeout():
+	var wait_time = rng.randf_range(0,0.1)
+	await get_tree().create_timer(wait_time).timeout
 	if $CollisionShape2D.rotation_degrees == -1 or $CollisionShape2D.rotation_degrees == -180:
 		$CollisionShape2D/AnimatedSprite2D.animation = 'green'
 	else:
@@ -64,6 +65,8 @@ func _on_drip_timeout():
 		if ex:
 			$CollisionShape2D/exs.add_child(ex)
 	for foun in extras:
+		wait_time = rng.randf_range(0,0.2)
+		await get_tree().create_timer(wait_time).timeout
 		if foun.rotation_degrees == -1 or foun.rotation_degrees == -180:
 			foun.get_children()[0].animation = 'green'
 		else:
@@ -105,4 +108,5 @@ func _build_up(num, start = 0, x_diff = 100, Rotation = 0):
 		start += og_start
 		x_diff += og_x
 		verys.append(new)
+			
 	return verys

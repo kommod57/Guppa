@@ -29,8 +29,8 @@ func _ready():
 			position.y += 500
 			position.x += 100
 		elif Global.level == 6:
-			$AnimatedSprite2D.rotation_degrees = -90
-			$pivot.rotation_degrees = -90
+			$AnimatedSprite2D.rotation_degrees = 0
+			$pivot.rotation_degrees = 0
 		elif Global.level == 7:
 			position.y += 300
 		elif Global.level == 8:

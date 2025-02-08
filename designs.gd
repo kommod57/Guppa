@@ -4,88 +4,12 @@ var first_time = 0
 func _ready():
 	$word_back.hide()
 	first_time = 0
-	if Global.level == 1:
-		$level_1/Object3.hide()
-		$level_1/Object3/CollisionShape2D.disabled = true
-		$level_1/Object3/CollisionShape2D2.disabled = true
-	elif Global.level == 2:
-		$level_1/Object3.hide()
-		$level_1/Object3/CollisionShape2D.disabled = true
-		$level_1/Object3/CollisionShape2D2.disabled = true
-	elif Global.level == 3 or Global.level == 0:
-		$level_1/Object3.show()
-		$level_1/Object3/CollisionShape2D.disabled = false
-		$level_1/Object3/CollisionShape2D2.disabled = false
-		
-		$level_1/Object1.hide()
-		$level_1/Object2.hide()
-		$level_1/Object2/stair.disabled = true
-		$level_1/Object2/stair2.disabled = true
-		$level_1/Object2/stair3.disabled = true
-		$level_1/Object2/stair4.disabled = true
-		$level_1/Object2/CollisionShape2D4.disabled = true
-		$level_1/Object2/CollisionShape2D5.disabled = true
-		$level_1/Object2/CollisionShape2D6.disabled = true
-		$level_1/Object1/CollisionShape2D3.disabled = true
-		$level_1/Object1/CollisionShape2D4.disabled = true
-		$level_1/Object1/CollisionShape2D5.disabled = true
-	elif Global.level > 3:
-		$level_1/Object1.show()
-		$level_1/Object2.show()
-		$level_1/Object3.show()
-		$level_1/Object3/CollisionShape2D.position.y = -2000
-		$level_1/Object3/CollisionShape2D2.position.y = -2000
-		$level_1/Object2/stair.position.y = -2000
-		$level_1/Object2/stair2.position.y = -2000
-		$level_1/Object2/stair3.position.y = -2000
-		$level_1/Object2/stair4.position.y = -2000
-		$level_1/Object2/CollisionShape2D4.position.y = -2000
-		$level_1/Object2/CollisionShape2D5.position.y = -2000
-		$level_1/Object2/CollisionShape2D6.position.y = -2000
-		$level_1/Object1/CollisionShape2D3.position.y = -2000
-		$level_1/Object1/CollisionShape2D4.position.y = -2000
-		$level_1/Object1/CollisionShape2D5.position.y = -2000
-	if Global.level == 4:
-		$level_1/Object3/CollisionShape2D.position.y = 0
-		$level_1/Object3/CollisionShape2D.position.x += 5
-		$level_1/Object1/CollisionShape2D3.position.y = -480
-		$level_1/Object1/CollisionShape2D3.position.x -= 300
-		$level_1/Object1/CollisionShape2D5.position.y = -300
-		$level_1/Object1/CollisionShape2D5.position.x -= 600
-	elif Global.level == 5:
-		$level_1/Object3/CollisionShape2D.position.y = 500
-		$level_1/Object3/CollisionShape2D.position.x += 600
-	elif Global.level == 6:
-		$level_1/Object1/CollisionShape2D5.position += Vector2(50,2000-200)
-		$level_1/Object2/CollisionShape2D5.position += Vector2(-180,2000-250)
-	elif Global.level == 7:
-		$level_1/Object2/CollisionShape2D5.position += Vector2(-100,2000-250)
-	elif Global.level == 8:
-		$level_1/Object2/CollisionShape2D5.position += Vector2(420,2000-600)
+	
+	
 	
 	
 var to_del = []	
 func _process(_delta):
-	if not Global.lever_on:
-		$level_1/Object2/switch_block.disabled = false
-		$level_1/Object2/switch_block/ColorRect2.modulate.a = 1
-		
-		if Global.level == 2:
-
-			$level_1/Object2/switch_block.position = Vector2(-397.143,-29)
-		elif Global.level == 6:
-
-			$level_1/Object2/switch_block.position = Vector2(-250,-200)
-		elif Global.level == 8:
-			$level_1/Object2/switch_block.position = Vector2(0,-2000)
-
-		else:
-
-			$level_1/Object2/switch_block.position = Vector2(0,-2000)
-	else:
-		$level_1/Object2/switch_block.disabled = true 
-		$level_1/Object2/switch_block/ColorRect2.modulate.a = 0.5
-
 	if Global.level == 0:
 		if first_time == 0 and not Global.push:
 			first_time = 1
@@ -106,16 +30,6 @@ func _process(_delta):
 		if first_time == 0 and not Global.push:
 			first_time = 1
 			to_del = await _make_words('1: Guppa head', 0.5)
-			
-		$level_1/Object1.show()
-		$level_1/Object2.hide()
-		$level_1/Object2/stair.disabled = true
-		$level_1/Object2/stair2.disabled = true
-		$level_1/Object2/stair3.disabled = true
-		$level_1/Object2/stair4.disabled = true
-		$level_1/Object2/CollisionShape2D4.disabled = true
-		$level_1/Object2/CollisionShape2D5.disabled = true
-		$level_1/Object2/CollisionShape2D6.disabled = true
 		if Input.is_action_just_pressed("jump") or Input.is_action_just_pressed('special'):
 			_delete_words(to_del)
 		if Global.push and first_time == 1:
@@ -124,7 +38,7 @@ func _process(_delta):
 			to_del = await _make_words('Space to twirl', 0.5)
 			
 	elif Global.level == 2:
-		$level_1/Object2.show()
+
 		if first_time == 0:
 			
 			first_time = 1
@@ -132,18 +46,6 @@ func _process(_delta):
 		if Input.is_action_just_pressed('special') and first_time == 1:
 			first_time = 2
 			_delete_words(to_del)
-		$level_1/Object1.hide()
-		$level_1/Object2/stair.disabled = false
-		$level_1/Object2/stair2.disabled = false
-		$level_1/Object2/stair3.disabled = false
-		$level_1/Object2/stair4.disabled = false
-		$level_1/Object2/CollisionShape2D4.disabled = false
-		$level_1/Object2/CollisionShape2D5.disabled = false
-		$level_1/Object2/CollisionShape2D6.disabled = false
-		$level_1/Object2.show()
-		$level_1/Object1/CollisionShape2D3.disabled = true
-		$level_1/Object1/CollisionShape2D4.disabled = true
-		$level_1/Object1/CollisionShape2D5.disabled = true
 
 	elif Global.level == 3:
 		if first_time == 0:
@@ -323,16 +225,28 @@ func _process(_delta):
 			first_time = 4
 			_delete_words(to_del)
 	elif Global.level == 20 and Global.natural_level_progession == 0.3:
-		$word_back.show()
 		if first_time == 0:
+			first_time = 0.1
+			await get_tree().create_timer(1).timeout
+			
+			$Bell.play()
+			first_time = 0.5
+			await get_tree().create_timer(2).timeout
 			first_time = 1
-			to_del = await _make_words("TAKE COVER", 0.5)
-			await get_tree().create_timer(4).timeout
+			$word_back.show()
+			$word_back.modulate.a = 0
+			first_time = 1.5
+			await _modulate($word_back, 1)
 			first_time = 2
-		elif first_time == 2:
+			to_del = await _make_words("Take cover", 0.5)
+			await get_tree().create_timer(2).timeout
+			first_time = 3
+		elif first_time == 3:
 			await _delete_words(to_del)
+			first_time = 4
+		elif first_time == 4:
+			await  _modulate($word_back, -1)
 			Global.natural_level_progession = 0.4
-			$word_back.hide()
 	elif Global.level == 21:
 		if first_time == 0:
 			first_time = 1
@@ -343,7 +257,17 @@ func _process(_delta):
 			await _delete_words(to_del)
 			first_time = 3
 
-			
+func _modulate(sprite, out):
+	if out == 1:
+		sprite.modulate.a = 0
+	elif out == -1:
+		sprite.modulate.a = 1
+	else:
+		print('ERROR')
+	for i in range(0,20):
+		sprite.modulate.a += 0.05 * out
+		await get_tree().create_timer(0.05).timeout
+		
 	
 			
 		

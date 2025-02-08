@@ -83,6 +83,12 @@ func _ready():
 	else:
 		
 		queue_free()
+
+	if $conver_col:
+		if abs($conver_col.rotation_degrees) != 90:
+			$conver_col/con_top/top.disabled = true
+			$conver_col/con_top2/top.disabled = true
+		
 		
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
@@ -128,6 +134,9 @@ func _build_up(num, start = 0, x_diff = 100, Rotation = 0):
 	for i in range(0,num):
 		var new = ''
 		new = $conver_col.duplicate()
+		if abs(Rotation) != 90:
+			new.get_children()[1].get_children()[0].disabled = true
+			new.get_children()[2].get_children()[0].disabled = true
 		new.position.y += start
 		new.position.x += x_diff
 		new.rotation_degrees = Rotation

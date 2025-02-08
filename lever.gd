@@ -20,7 +20,7 @@ func _ready():
 	elif Global.level == 8:
 		position = Vector2(1550,100)
 	elif Global.level == 9:
-		position = Vector2(1200,1110)
+		position = Vector2(1400,1110)
 	elif Global.level == 11:
 		position = Vector2(1550,150)
 		
@@ -37,14 +37,17 @@ func _ready():
 	else:
 		queue_free()
 
-		
-
+var local_lever_on = false
 func _physics_process(delta):
 	if touch_con:
 		position.x += 100 * delta * convey_dir
+	if Global.lever_on != local_lever_on:
+		$click.play()
 	if Global.lever_on:
+		local_lever_on = true
 		$lever_anim.animation = 'on'
 	else:
+		local_lever_on = false
 		$lever_anim.animation = 'off'
 	# Add the gravity.
 	if not is_on_floor():
@@ -66,6 +69,7 @@ var once = false
 func _process(_delta):
 	if player_in_area:
 		if Input.is_action_just_pressed("special"):
+			
 			if $lever_anim.animation == 'off':
 				$lever_anim.animation = 'on'
 				Global.lever_on = true

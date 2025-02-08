@@ -30,12 +30,24 @@ var touch_con = false
 var convey_dir = 0
 func _on_area_2d_body_entered(body):
 	rand_dist = rng.randf_range(1,10)
+	if body.name == 'Shooter_guppa':
+		if Global.dangerous_particles or self.get_parent().rotation_degrees == -1 or self.get_parent().rotation_degrees == -180:
+			$sizzle.play()
+		elif Global.level == 0:
+			$splish.play()
+		else:
+			$splish.play()
 	if body.name == 'CharacterBody2D':
 		touch = true
 		if Global.dangerous_particles or self.get_parent().rotation_degrees == -1 or self.get_parent().rotation_degrees == -180:
+			$sizzle.play()
 			Global.filled -= 1
 		elif Global.level == 0:
+			$splish.play()
 			Global.filled += 1
+		else:
+			if velocity.y > 100:
+				$splish.play()
 	if 'conveyor' in body.name:
 		touch_con = true
 		var child_index = -1

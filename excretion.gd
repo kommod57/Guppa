@@ -14,7 +14,8 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
+func _process(_delta):
+	pass
 #
 	##if position.y < 1250:
 		##position.y += 980 * delta
@@ -36,17 +37,26 @@ func _on_despawn_timeout():
 
 
 
-
+var enered_scared_guppa = true
 
 func _on_area_2d_area_entered(area):
+	if rotation_degrees == -1 or rotation_degrees == -180 or Global.dangerous_particles:
+		$Sauce/sizzle2.play()
+	else:
+		$Sauce/splish2.play()
 	if area.name == 'Scared_guppa':
+		
 		if rotation_degrees == -1 or rotation_degrees == -180:
+			$Sauce/sizzle.play()
 			Global.sprite_evil_fill -= 1
 		elif not Global.dangerous_particles or rotation_degrees == 1:
-			Global.filled += 1
+			Global.sprite_evil_fill += 1
+			$Sauce/splish.play()
 		else:
+			$Sauce/sizzle.play()
 			Global.sprite_evil_fill -= 1
-		queue_free()
+		#queue_free()
 	elif area.name == 'Gen_area_shooter':
-		queue_free()
+		pass
+		#queue_free()
 	

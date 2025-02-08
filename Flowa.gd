@@ -23,7 +23,7 @@ func _ready():
 		pass
 	elif Global.level == 20 and Global.natural_level_progession == 0.2:
 		$skull_amulet.show()
-		position = Vector2(1200,600)
+		position = Vector2(700,600)
 	else:
 		queue_free()
 
@@ -50,12 +50,17 @@ func _physics_process(delta):
 		Global.jumpy = true
 		position = Global.scared_guppa_pos + Vector2(0,-35)
 	elif on_shooter:
+		Global.jumpy = false
 		$skull_amulet.animation = 'moving'
 		position = the_shooter.position + Vector2(0,-25)
+	else:
+		Global.jumpy = false
+		
 	if not is_on_floor():
 		if $AnimatedSprite2D.animation == 'reg' and not on_guppa and not on_shooter:
 			velocity.y += gravity * delta
 	else:
+
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 		
@@ -84,15 +89,18 @@ func _on_box_body_entered(body):
 	#if Input.is_action_pressed("jump"):
 		#velocity.y = JUMP_VELOCITY
 	if body.name == 'CharacterBody2D':
+		$keys.play()
 		$AnimatedSprite2D.animation = 'move'
 	elif body.name == 'scared_guppa':
+		$keys.play()
 		on_guppa = true
 	elif body.name == 'Shooter_guppa':
+		$keys.play()
 		if $skull_amulet.visible:
 			on_shooter = true
 			the_shooter = body
 	if body.name == 'rigid_paint' and Global.dangerous_particles:
-		
+		on_guppa = false
 		$click.play()
 		await get_tree().create_timer(0.1).timeout
 		Global.dangerous_particles = false
@@ -106,7 +114,7 @@ func _on_box_body_entered(body):
 		#var shape_owner_id = body.shape_find_owner(body_shape_index)
 		# Iterate over collision shapes and check which one overlaps
 		for i in range(children.size()):
-			if children[i] is CollisionShape2D:
+			if children[i] is CollisionShape2D:		
 				var shape = children[i]
 				# Manually check overlap using global positions
 				if shape.global_position.distance_to(global_position) < 70:

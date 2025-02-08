@@ -45,7 +45,8 @@ func _ready():
 		speed_x = running_away_speed
 	elif Global.level == 4 or Global.level == 5:
 		position = Vector2(50,1110)
-	elif Global.level == 9 or Global.level == 10:
+		
+	elif Global.level == 8 or Global.level == 9 or Global.level == 10:
 		position = Vector2(1500,1110)
 	elif Global.level==11:
 		position = Vector2(1500,100)
@@ -58,7 +59,7 @@ func _ready():
 	elif Global.level == 19:
 		position = Vector2(1550,200)
 	elif Global.level == 20 and first_time and Global.natural_level_progession == 0:
-		position = Vector2(600,1110)
+		position = Vector2(600,1120)
 		$Scared_guppa/AnimatedSprite2D.animation = 'walk_right'
 		$Scared_guppa/AnimatedSprite2D.play()
 		for i in range(20):
@@ -67,12 +68,14 @@ func _ready():
 		$Scared_guppa/AnimatedSprite2D.animation = 'walk_left'
 		$Scared_guppa/AnimatedSprite2D.stop()
 		await get_tree().create_timer(12.5).timeout
-		$splat.play()
 		await get_tree().create_timer(0.5).timeout
+		$splat.play()
+		
 		self.hide()
 		await get_tree().create_timer(1.5).timeout
-		$pop.play()
 		await get_tree().create_timer(0.5).timeout
+		$pop.play()
+		
 		self.show()
 		first_time = false
 		$Vision/scared.start()
@@ -93,7 +96,7 @@ func _process(delta):
 		first_time = false
 		
 	_turn_around(delta)
-	if Global.filled > 3:
+	if Global.sprite_evil_fill > 3:
 		$Scared_guppa/AnimatedSprite2D.animation = 'fill'
 		if not $Scared_guppa/AnimatedSprite2D.is_playing():
 			$Scared_guppa/AnimatedSprite2D.frame = 18
@@ -101,6 +104,8 @@ func _process(delta):
 			Global.filled = 0
 			Global.level += 1
 	elif Global.sprite_evil_fill < -3:
+		if not $metalic.is_playing():
+			$metalic.play()
 		$Scared_guppa/AnimatedSprite2D.animation = 'evil_fill'
 		if not $Scared_guppa/AnimatedSprite2D.is_playing():
 			$Scared_guppa/AnimatedSprite2D.frame = 18
@@ -191,6 +196,7 @@ func _process(delta):
 						which_direction = -1
 						speed_x = running_away_speed
 		else:
+			which_direction = which_direction * -1
 			$Vision/scared.start()
 			
 			$Scared_guppa/AnimatedSprite2D.animation = 'stomp'
@@ -273,17 +279,18 @@ func _on_top_body_entered(_body):
 func _on_top_body_exited(_body):
 	my_head = false
 	
-func _turn_around(_delta):
 
+func _turn_around(_delta):
 	if (which_direction == 1 or which_direction == -1) and Global.filled < 3 and Global.sprite_evil_fill > -3:
 		var current_pos = position.x
 		await get_tree().create_timer(.1).timeout
 		if current_pos == position.x and Global.level != 20:
-			my_head = true
+			#my_head = true
 			which_direction = which_direction * -1
 			switch_dir = true
 		if abs(current_pos - position.x) > 5:
 			my_head = false
+
 
 var object_cover = false
 var vision = 0
@@ -299,7 +306,7 @@ var switch_dir = false
 func _on_left_vision_body_exited(body):
 	if (body.name == 'CharacterBody2D' or body.name == 'Shooter_guppa') and no_look:
 		no_look = false
-		$"Vision/not_looking at particles".start()
+		#$Vision/"not_looking at particles".start()
 		my_head = false
 		vision = 0
 		
@@ -318,7 +325,7 @@ var enemy_dir = 1
 func _on_right_vision_body_exited(body):
 	if (body.name == 'CharacterBody2D' or body.name == 'Shooter_guppa') and no_look:
 		no_look = false
-		$"Vision/not_looking at particles".start()
+		#$Vision/"not_looking at particles".start()
 		my_head = false
 		vision = 0
 

@@ -23,6 +23,7 @@ func _process(_delta):
 func _on_skull_case_body_entered(body):
 	if body.name == 'Flowa':
 		if body.get_children()[3].visible:
+			$CollisionShape2D/skull_case/AudioStreamPlayer2D.play()
 			await get_tree().create_timer(0.2).timeout
 			$CollisionShape2D/AnimatedSprite2D.animation = 'on'
 			if Global.level == 20:

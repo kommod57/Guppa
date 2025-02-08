@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bk5fuv2xvo0a0"]
+[gd_scene load_steps=57 format=3 uid="uid://bk5fuv2xvo0a0"]
 
 [ext_resource type="Script" path="res://switch_block.gd" id="1_ilcm0"]
 [ext_resource type="Script" path="res://reg_block.gd" id="2_k2j6d"]
@@ -10,12 +10,13 @@
 [ext_resource type="Script" path="res://skull_case.gd" id="8_lr8bm"]
 [ext_resource type="Texture2D" uid="uid://dw1a2oq6h0h53" path="res://skull_case.png" id="9_b6gpx"]
 [ext_resource type="Texture2D" uid="uid://b556u2t2xx6qf" path="res://skull_case1.png" id="10_iocv5"]
+[ext_resource type="AudioStream" uid="uid://bj6y380juw7xk" path="res://latch.mp3" id="11_oufdy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wi68u"]
 size = Vector2(45, 43)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_soxq0"]
-size = Vector2(108, 20)
+size = Vector2(103, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mtga0"]
 atlas = ExtResource("4_g5yqi")
@@ -238,6 +239,9 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lqtc2"]
+size = Vector2(18, 20)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7ogl"]
 size = Vector2(43, 51)
 
@@ -373,13 +377,29 @@ collision_layer = 4
 script = ExtResource("3_u7tg5")
 
 [node name="conver_col" type="CollisionShape2D" parent="conveyor"]
+position = Vector2(2.5, 0)
 shape = SubResource("RectangleShape2D_soxq0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="conveyor/conver_col"]
-position = Vector2(-1.5, -1.5)
+position = Vector2(-4, -1.5)
 sprite_frames = SubResource("SpriteFrames_pjki8")
-animation = &"still"
-frame_progress = 0.829571
+animation = &"move_right"
+frame = 12
+frame_progress = 0.0194876
+
+[node name="con_top" type="StaticBody2D" parent="conveyor/conver_col"]
+collision_layer = 4
+
+[node name="top" type="CollisionShape2D" parent="conveyor/conver_col/con_top"]
+position = Vector2(-57.5, 0)
+shape = SubResource("RectangleShape2D_lqtc2")
+
+[node name="con_top2" type="StaticBody2D" parent="conveyor/conver_col"]
+collision_layer = 4
+
+[node name="top" type="CollisionShape2D" parent="conveyor/conver_col/con_top2"]
+position = Vector2(60.5, 0)
+shape = SubResource("RectangleShape2D_lqtc2")
 
 [node name="fountain" type="StaticBody2D" parent="."]
 collision_layer = 4
@@ -398,7 +418,7 @@ animation = &"red"
 position = Vector2(-0.5, 29.5)
 
 [node name="drip" type="Timer" parent="fountain/CollisionShape2D"]
-wait_time = 0.05
+wait_time = 0.1
 autostart = true
 
 [node name="exs" type="Node2D" parent="fountain/CollisionShape2D"]
@@ -420,7 +440,7 @@ animation = &"red"
 position = Vector2(-0.5, 29.5)
 
 [node name="drip" type="Timer" parent="perpectual_fountain/CollisionShape2D"]
-wait_time = 0.05
+wait_time = 0.1
 autostart = true
 
 [node name="exs" type="Node2D" parent="perpectual_fountain/CollisionShape2D"]
@@ -454,6 +474,10 @@ collision_mask = 33
 [node name="CollisionShape2D" type="CollisionShape2D" parent="skull_case/CollisionShape2D/skull_case"]
 position = Vector2(0, -63.5)
 shape = SubResource("RectangleShape2D_dxdup")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="skull_case/CollisionShape2D/skull_case"]
+stream = ExtResource("11_oufdy")
+volume_db = 5.962
 
 [connection signal="timeout" from="fountain/CollisionShape2D/drip" to="fountain" method="_on_drip_timeout"]
 [connection signal="timeout" from="perpectual_fountain/CollisionShape2D/drip" to="perpectual_fountain" method="_on_drip_timeout"]

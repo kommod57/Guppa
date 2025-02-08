@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://2kvr81dwgbde"]
+[gd_scene load_steps=8 format=3 uid="uid://2kvr81dwgbde"]
 
 [ext_resource type="Script" path="res://lever.gd" id="1_50ds1"]
 [ext_resource type="Texture2D" uid="uid://baa4k5kkhg58r" path="res://leever1.png" id="2_xrr65"]
+[ext_resource type="AudioStream" uid="uid://ryaucmsm2nin" path="res://door-lock-43124.mp3" id="3_xkw2p"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qtlxx"]
 atlas = ExtResource("2_xrr65")
@@ -58,6 +59,10 @@ collision_mask = 7
 position = Vector2(-3, 24.8375)
 scale = Vector2(1.1, 1.1)
 shape = SubResource("RectangleShape2D_8kmp3")
+
+[node name="click" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_xkw2p")
+volume_db = 6.624
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

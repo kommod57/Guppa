@@ -1,47 +1,11 @@
-[gd_scene load_steps=98 format=3 uid="uid://c8oyhf0fi1coo"]
+[gd_scene load_steps=92 format=3 uid="uid://c8oyhf0fi1coo"]
 
-[ext_resource type="Texture2D" uid="uid://dgxsgsm6q3b7w" path="res://platforms.png" id="1_4a17k"]
 [ext_resource type="Script" path="res://designs.gd" id="1_koiud"]
 [ext_resource type="Texture2D" uid="uid://bbh147jaijagj" path="res://NewFont.png" id="3_nt4rv"]
 [ext_resource type="PackedScene" uid="uid://7k56gwtt05j0" path="res://one_way_plat.tscn" id="4_epob2"]
 [ext_resource type="PackedScene" uid="uid://bk5fuv2xvo0a0" path="res://blocks.tscn" id="5_eevbp"]
 [ext_resource type="Texture2D" uid="uid://c5cv4qolfnbrr" path="res://warning.png" id="6_2epcm"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_kfltn"]
-size = Vector2(46.1847, 44.378)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_b1fxl"]
-atlas = ExtResource("1_4a17k")
-region = Rect2(0, 0, 2000, 2000)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_xutgv"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_b1fxl")
-}],
-"loop": false,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_d2c3q"]
-atlas = ExtResource("1_4a17k")
-region = Rect2(2000, 0, 2000, 2000)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_bdsmx"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_d2c3q")
-}],
-"loop": true,
-"name": &"default",
-"speed": 5.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_pduo5"]
-size = Vector2(134.313, 35.5)
+[ext_resource type="AudioStream" uid="uid://cd5y7hctlrf7t" path="res://bell.mp3" id="7_lbdtw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_24ar0"]
 atlas = ExtResource("3_nt4rv")
@@ -653,150 +617,6 @@ theme_override_font_sizes/font_size = 30
 text = "Arrow keys/ WASD to move"
 horizontal_alignment = 1
 
-[node name="level_1" type="Node2D" parent="."]
-
-[node name="Object1" type="StaticBody2D" parent="level_1"]
-visible = false
-position = Vector2(1536, 1122)
-scale = Vector2(1.4, 1)
-collision_layer = 4
-collision_mask = 3
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="level_1/Object1"]
-position = Vector2(-230.714, -172)
-shape = SubResource("RectangleShape2D_kfltn")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object1/CollisionShape2D3"]
-position = Vector2(9.28589, 84)
-sprite_frames = SubResource("SpriteFrames_xutgv")
-frame_progress = 1.0
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="level_1/Object1"]
-position = Vector2(-144.286, -243)
-shape = SubResource("RectangleShape2D_kfltn")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object1/CollisionShape2D4"]
-position = Vector2(9.28589, 84)
-sprite_frames = SubResource("SpriteFrames_xutgv")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="level_1/Object1"]
-position = Vector2(-415, -407)
-scale = Vector2(8.77143, 1)
-shape = SubResource("RectangleShape2D_kfltn")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object1/CollisionShape2D5"]
-position = Vector2(8.86531, 84)
-sprite_frames = SubResource("SpriteFrames_xutgv")
-
-[node name="Object2" type="StaticBody2D" parent="level_1"]
-position = Vector2(1639, 1080)
-scale = Vector2(1.4, 1)
-collision_layer = 4
-collision_mask = 3
-
-[node name="stair" type="CollisionPolygon2D" parent="level_1/Object2"]
-polygon = PackedVector2Array(-535.715, 35, -517.143, 19, -517.143, 64, -560.715, 65)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/stair"]
-position = Vector2(-531.429, 123)
-sprite_frames = SubResource("SpriteFrames_bdsmx")
-
-[node name="stair3" type="CollisionPolygon2D" parent="level_1/Object2"]
-position = Vector2(46.4287, -46)
-polygon = PackedVector2Array(-535.715, 35, -517.143, 19, -517.143, 64, -560.715, 65)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/stair3"]
-position = Vector2(-531.429, 123)
-sprite_frames = SubResource("SpriteFrames_bdsmx")
-
-[node name="stair4" type="CollisionPolygon2D" parent="level_1/Object2"]
-position = Vector2(89.2858, -89)
-polygon = PackedVector2Array(-535.715, 35, -517.143, 19, -517.143, 64, -560.715, 65)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/stair4"]
-position = Vector2(-531.429, 123)
-sprite_frames = SubResource("SpriteFrames_bdsmx")
-
-[node name="stair2" type="CollisionPolygon2D" parent="level_1/Object2"]
-position = Vector2(-449.286, 583)
-rotation = 1.5708
-polygon = PackedVector2Array(-535.715, 35, -517.143, 19, -517.143, 64, -560.715, 65)
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/stair2"]
-position = Vector2(-531.429, 123)
-sprite_frames = SubResource("SpriteFrames_bdsmx")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="level_1/Object2"]
-position = Vector2(-587.857, -238)
-shape = SubResource("RectangleShape2D_kfltn")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/CollisionShape2D4"]
-position = Vector2(9.28589, 84)
-sprite_frames = SubResource("SpriteFrames_xutgv")
-
-[node name="switch_block" type="CollisionShape2D" parent="level_1/Object2"]
-position = Vector2(-397.143, -29)
-scale = Vector2(1.37143, 1)
-shape = SubResource("RectangleShape2D_kfltn")
-
-[node name="ColorRect2" type="ColorRect" parent="level_1/Object2/switch_block"]
-offset_left = -23.0
-offset_top = -20.0
-offset_right = -16.0
-offset_bottom = 20.0
-scale = Vector2(6.47682, 1.07214)
-color = Color(0.171637, 0.171637, 0.171637, 1)
-
-[node name="CollisionShape2D6" type="CollisionShape2D" parent="level_1/Object2"]
-position = Vector2(-95, -30)
-scale = Vector2(9.34286, 1)
-shape = SubResource("RectangleShape2D_kfltn")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/CollisionShape2D6"]
-position = Vector2(9.28589, 84)
-sprite_frames = SubResource("SpriteFrames_xutgv")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="level_1/Object2"]
-position = Vector2(-485, 48.39)
-scale = Vector2(1, 1.64)
-shape = SubResource("RectangleShape2D_kfltn")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="level_1/Object2/CollisionShape2D5"]
-position = Vector2(9.28589, 84)
-sprite_frames = SubResource("SpriteFrames_xutgv")
-
-[node name="Object3" type="StaticBody2D" parent="level_1"]
-visible = false
-position = Vector2(39, 406)
-collision_layer = 4
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="level_1/Object3"]
-position = Vector2(729, 478)
-scale = Vector2(0.639999, 1)
-shape = SubResource("RectangleShape2D_pduo5")
-
-[node name="ColorRect2" type="ColorRect" parent="level_1/Object3/CollisionShape2D"]
-offset_left = -71.8438
-offset_top = -15.25
-offset_right = -10.8438
-offset_bottom = 24.75
-scale = Vector2(2.4, 1)
-color = Color(0, 0, 0, 1)
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="level_1/Object3"]
-position = Vector2(873, 479)
-scale = Vector2(0.639999, 1)
-shape = SubResource("RectangleShape2D_pduo5")
-
-[node name="ColorRect" type="ColorRect" parent="level_1/Object3/CollisionShape2D2"]
-offset_left = -75.0
-offset_top = -17.0
-offset_right = -14.0
-offset_bottom = 23.0
-scale = Vector2(2.4, 1)
-color = Color(0, 0, 0, 1)
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = 3
 
@@ -829,3 +649,6 @@ texture = ExtResource("6_2epcm")
 [node name="Sprite2D2" type="Sprite2D" parent="word_back"]
 position = Vector2(456.36, 318)
 texture = ExtResource("6_2epcm")
+
+[node name="Bell" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_lbdtw")

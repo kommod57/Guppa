@@ -10,6 +10,7 @@ func _ready():
 		$CollisionShape2D.position = Vector2(500,500)
 		extras = _build_up(1,0,100,-1)
 	elif Global.level == 17:
+		$CollisionShape2D/drip.wait_time = 0.1
 		$CollisionShape2D.rotation_degrees = -1
 		$CollisionShape2D.position = Vector2(500,100)
 		extras = _build_up(7,0,50,-1)

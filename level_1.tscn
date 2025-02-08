@@ -1,16 +1,309 @@
-[gd_scene load_steps=13 format=3 uid="uid://dvimx7qdtx2v5"]
+[gd_scene load_steps=41 format=3 uid="uid://dvimx7qdtx2v5"]
 
 [ext_resource type="PackedScene" uid="uid://cpor7cphqod1e" path="res://player.tscn" id="1_atsri"]
 [ext_resource type="Script" path="res://level_1.gd" id="1_uoyv4"]
+[ext_resource type="Texture2D" uid="uid://cqlrosu8d6515" path="res://tre.png" id="2_oxq1h"]
 [ext_resource type="PackedScene" uid="uid://c8oyhf0fi1coo" path="res://designs.tscn" id="2_uw00j"]
+[ext_resource type="Texture2D" uid="uid://ws0dbly1hn17" path="res://clouds.png" id="2_ywyyu"]
+[ext_resource type="Texture2D" uid="uid://7614icccy3va" path="res://background hills.png" id="3_1mx03"]
 [ext_resource type="AudioStream" uid="uid://bw8l4aps5wgug" path="res://Still_Bittersweet.mp3" id="3_ejx5f"]
 [ext_resource type="PackedScene" uid="uid://bae5wq61kbgah" path="res://scared_guppa.tscn" id="4_0fi32"]
+[ext_resource type="Texture2D" uid="uid://b63ikq482m78e" path="res://grass.png" id="6_i8uns"]
 [ext_resource type="PackedScene" uid="uid://2kvr81dwgbde" path="res://lever.tscn" id="7_6db1b"]
 [ext_resource type="PackedScene" uid="uid://p4fkmp8qdb4d" path="res://flowa.tscn" id="8_6t1g1"]
 [ext_resource type="PackedScene" uid="uid://dxftbk30hp8et" path="res://fanshy.tscn" id="9_a5xp6"]
 [ext_resource type="PackedScene" uid="uid://carf7d64ihlx6" path="res://rigid_paint.tscn" id="9_g2d8s"]
 [ext_resource type="PackedScene" uid="uid://di41qlvopt4x1" path="res://boss.tscn" id="10_n4q0g"]
 [ext_resource type="PackedScene" uid="uid://b5al3ra1ltrtd" path="res://shooter_guppa.tscn" id="11_u8035"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n5445"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pmbj4"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iehu"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(512, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q8d55"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(768, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_16h7l"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m1lb0"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pywrm"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(512, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4y0sg"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(768, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_le31c"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hn5xk"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gcw7x"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(512, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h04jn"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(768, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uwro"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(0, 768, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eai5f"]
+atlas = ExtResource("2_ywyyu")
+region = Rect2(768, 768, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pyll3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n5445")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pmbj4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2iehu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q8d55")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_16h7l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m1lb0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4y0sg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_le31c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hn5xk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gcw7x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h04jn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uwro")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eai5f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pywrm")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7fs13"]
+atlas = ExtResource("2_oxq1h")
+region = Rect2(512, 1024, 512, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_o6dlg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fs13")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_twxkw"]
+atlas = ExtResource("2_oxq1h")
+region = Rect2(1024, 1024, 512, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xge2p"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_twxkw")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kgy7k"]
+atlas = ExtResource("2_oxq1h")
+region = Rect2(0, 0, 512, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nwjb"]
+atlas = ExtResource("2_oxq1h")
+region = Rect2(512, 0, 512, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkh1m"]
+atlas = ExtResource("2_oxq1h")
+region = Rect2(1024, 0, 512, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sxl8"]
+atlas = ExtResource("2_oxq1h")
+region = Rect2(0, 1024, 512, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_glpok"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kgy7k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nwjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkh1m")
+}, {
+"duration": 100.0,
+"texture": SubResource("AtlasTexture_6sxl8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tr657"]
 size = Vector2(1176, 79)
@@ -27,12 +320,74 @@ scale = Vector2(1.44, 1.84)
 color = Color(0.443654, 0.544372, 0.818169, 1)
 
 [node name="green_back" type="ColorRect" parent="."]
+visible = false
 offset_left = 1.0
 offset_top = -17.0
 offset_right = 1164.0
 offset_bottom = 667.0
 scale = Vector2(1.44, 1.84)
 color = Color(0.708571, 1, 0.559643, 1)
+
+[node name="back_objects" type="Node2D" parent="."]
+
+[node name="clouds" type="Node2D" parent="back_objects"]
+
+[node name="cloud" type="AnimatedSprite2D" parent="back_objects/clouds"]
+modulate = Color(1, 1, 1, 0.352941)
+sprite_frames = SubResource("SpriteFrames_pyll3")
+
+[node name="cloud2" type="AnimatedSprite2D" parent="back_objects/clouds"]
+modulate = Color(1, 1, 1, 0.352941)
+sprite_frames = SubResource("SpriteFrames_pyll3")
+
+[node name="cloud3" type="AnimatedSprite2D" parent="back_objects/clouds"]
+modulate = Color(1, 1, 1, 0.352941)
+sprite_frames = SubResource("SpriteFrames_pyll3")
+
+[node name="cloud4" type="AnimatedSprite2D" parent="back_objects/clouds"]
+modulate = Color(1, 1, 1, 0.352941)
+sprite_frames = SubResource("SpriteFrames_pyll3")
+
+[node name="cloud5" type="AnimatedSprite2D" parent="back_objects/clouds"]
+modulate = Color(1, 1, 1, 0.352941)
+sprite_frames = SubResource("SpriteFrames_pyll3")
+
+[node name="cloud6" type="AnimatedSprite2D" parent="back_objects/clouds"]
+modulate = Color(1, 1, 1, 0.352941)
+sprite_frames = SubResource("SpriteFrames_pyll3")
+
+[node name="cloud7" type="AnimatedSprite2D" parent="back_objects/clouds"]
+modulate = Color(1, 1, 1, 0.352941)
+sprite_frames = SubResource("SpriteFrames_pyll3")
+
+[node name="cloud8" type="AnimatedSprite2D" parent="back_objects/clouds"]
+modulate = Color(1, 1, 1, 0.352941)
+sprite_frames = SubResource("SpriteFrames_pyll3")
+
+[node name="cloud9" type="AnimatedSprite2D" parent="back_objects/clouds"]
+modulate = Color(1, 1, 1, 0.352941)
+sprite_frames = SubResource("SpriteFrames_pyll3")
+
+[node name="cloud10" type="AnimatedSprite2D" parent="back_objects/clouds"]
+modulate = Color(1, 1, 1, 0.352941)
+sprite_frames = SubResource("SpriteFrames_pyll3")
+
+[node name="hills" type="Sprite2D" parent="back_objects"]
+position = Vector2(1014, 867)
+texture = ExtResource("3_1mx03")
+
+[node name="trees" type="Node2D" parent="back_objects"]
+
+[node name="regtree" type="AnimatedSprite2D" parent="back_objects/trees"]
+sprite_frames = SubResource("SpriteFrames_o6dlg")
+frame_progress = 0.00852968
+
+[node name="oregtree" type="AnimatedSprite2D" parent="back_objects/trees"]
+sprite_frames = SubResource("SpriteFrames_xge2p")
+
+[node name="binking_tree" type="AnimatedSprite2D" parent="back_objects/trees"]
+sprite_frames = SubResource("SpriteFrames_glpok")
+autoplay = "default"
 
 [node name="Node2D" parent="." instance=ExtResource("2_uw00j")]
 
@@ -52,9 +407,58 @@ offset_top = -32.0
 offset_right = -543.0
 offset_bottom = 8.0
 scale = Vector2(29, 1.76)
-color = Color(0, 0, 0, 1)
+color = Color(0.264977, 0.452902, 0.340549, 1)
+
+[node name="grass" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(-526.429, 18)
+texture = ExtResource("6_i8uns")
+
+[node name="grass2" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(-430, 17)
+texture = ExtResource("6_i8uns")
+
+[node name="grass3" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(-324.286, 23)
+texture = ExtResource("6_i8uns")
+
+[node name="grass4" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(-252.143, 19)
+texture = ExtResource("6_i8uns")
+
+[node name="grass5" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(-157.143, 17)
+texture = ExtResource("6_i8uns")
+
+[node name="grass6" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(-42.8571, 21)
+texture = ExtResource("6_i8uns")
+
+[node name="grass7" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(48.5714, 17)
+texture = ExtResource("6_i8uns")
+
+[node name="grass8" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(169.286, 11)
+texture = ExtResource("6_i8uns")
+
+[node name="grass9" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(289.286, 9)
+texture = ExtResource("6_i8uns")
+
+[node name="grass10" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(403.571, 20)
+texture = ExtResource("6_i8uns")
+
+[node name="grass11" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(506.429, 14)
+texture = ExtResource("6_i8uns")
+
+[node name="grass12" type="Sprite2D" parent="Borders/Ground"]
+position = Vector2(592.857, 14)
+texture = ExtResource("6_i8uns")
 
 [node name="Ceiling" type="CollisionShape2D" parent="Borders"]
+visible = false
 position = Vector2(559.286, -1115)
 shape = SubResource("RectangleShape2D_tr657")
 
@@ -67,8 +471,10 @@ scale = Vector2(29, 1.76)
 color = Color(0, 0, 0, 1)
 
 [node name="l_wall" type="CollisionShape2D" parent="Borders"]
+visible = false
 position = Vector2(-37.1429, -563)
 rotation = -1.5708
+scale = Vector2(1.31429, 1)
 shape = SubResource("RectangleShape2D_tr657")
 
 [node name="ColorRect" type="ColorRect" parent="Borders/l_wall"]
@@ -78,10 +484,13 @@ offset_right = -543.0
 offset_bottom = 8.0
 scale = Vector2(29, 1.76)
 color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="r_wall" type="CollisionShape2D" parent="Borders"]
+visible = false
 position = Vector2(1165.71, -559)
 rotation = -1.5708
+scale = Vector2(1.25714, 1)
 shape = SubResource("RectangleShape2D_tr657")
 
 [node name="ColorRect" type="ColorRect" parent="Borders/r_wall"]

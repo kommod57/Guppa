@@ -9,18 +9,11 @@ func _ready():
 		_build_up(1,-75,0)
 	elif Global.level == 7 or Global.level == 8:
 		position.y -= 50
-	elif Global.level == 9:
+	elif Global.level == 9 or Global.level== 10:
 		position += Vector2(-380,0)
 		rotation_degrees = 180
 		_build_up(6,40,0, 0)
 		_build_up(1,270,0, 180)
-		_build_up(6,40,-80, 0)
-		_build_up(6,40,80, 0)
-	elif Global.level == 10:
-		position += Vector2(-380,0)
-		rotation_degrees = 180
-		_build_up(6,40,0, 0)
-		#_build_up(1,270,0, 180)
 		_build_up(6,40,-80, 0)
 		_build_up(6,40,80, 0)
 	elif Global.level == 12:
@@ -36,11 +29,12 @@ func _ready():
 		_build_up(6,-160,0, 0)
 	elif Global.level == 20 and (Global.natural_level_progession >= 0.2):
 		position = Vector2(-40,800)
-		_build_up(16,0,80, 0)
-		_build_up(16,80,0, 90,Vector2(40,-840))
-		_build_up(16,80,0, -90,Vector2(1640,-840))
-		_build_up(20,0,80, 0, Vector2(0,340))
-		_build_up(20,0,80, 180, Vector2(0,370))
+		_build_up(17,0,70, 0, Vector2(20,0))
+		_build_up(18,70,0, 90,Vector2(40,-840))
+		_build_up(18,70,0, -90,Vector2(1640,-840))
+		_build_up(24,0,70, 0, Vector2(20,340))
+		_build_up(24,0,70, 180, Vector2(20,370))
+		_build_up(1,0,0, 0, Vector2(1200,170))
 
 
 	else:

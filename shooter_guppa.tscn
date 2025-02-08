@@ -1,10 +1,12 @@
-[gd_scene load_steps=49 format=3 uid="uid://b5al3ra1ltrtd"]
+[gd_scene load_steps=51 format=3 uid="uid://b5al3ra1ltrtd"]
 
 [ext_resource type="Script" path="res://shooter_guppa.gd" id="1_0vq1j"]
 [ext_resource type="Texture2D" uid="uid://dd1worx5knjcm" path="res://guppa_shooter.png" id="1_fso2f"]
 [ext_resource type="Script" path="res://shots.gd" id="2_d42ll"]
+[ext_resource type="AudioStream" uid="uid://yk61fqdeylda" path="res://sizzle.mp3" id="3_e052e"]
 [ext_resource type="Texture2D" uid="uid://6fn3wvi3l5og" path="res://overly_exited.png" id="3_ybl5p"]
 [ext_resource type="Texture2D" uid="uid://c1qnuq40tq1sn" path="res://Evil_Guppa_filled_green.png" id="4_8godn"]
+[ext_resource type="AudioStream" uid="uid://b51w03dr1wgsg" path="res://metalic.mp3" id="7_n2hqn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tu155"]
 
@@ -344,7 +346,7 @@ animations = [{
 radius = 17.0294
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_drclw"]
-size = Vector2(81, 17)
+size = Vector2(51, 17)
 
 [node name="Shooter_guppa" type="CharacterBody2D"]
 z_index = 4
@@ -367,7 +369,7 @@ offset_bottom = 10.0
 shape = SubResource("RectangleShape2D_tu155")
 
 [node name="see_guppa" type="Timer" parent="vision"]
-wait_time = 0.5
+wait_time = 2.0
 one_shot = true
 
 [node name="shots" type="Area2D" parent="."]
@@ -390,9 +392,12 @@ color = Color(0.0409143, 0.384904, 0, 1)
 wait_time = 0.1
 autostart = true
 
+[node name="sizzle" type="AudioStreamPlayer2D" parent="shots"]
+stream = ExtResource("3_e052e")
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_ce7fr")
-animation = &"excited_fill"
+animation = &"left"
 autoplay = "stopped"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -401,13 +406,20 @@ scale = Vector2(1.88123, 0.910991)
 shape = SubResource("CircleShape2D_0rl03")
 
 [node name="Top_of_head" type="Area2D" parent="."]
-position = Vector2(-5, -31)
+position = Vector2(-2, -21)
 collision_layer = 2
 collision_mask = 33
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Top_of_head"]
-position = Vector2(-0.5, 0)
+position = Vector2(-2, 0)
 shape = SubResource("RectangleShape2D_drclw")
+
+[node name="ColorRect" type="ColorRect" parent="Top_of_head"]
+visible = false
+offset_left = -19.0
+offset_top = -9.0
+offset_right = 21.0
+offset_bottom = 5.0
 
 [node name="Gen_area_shooter" type="Area2D" parent="."]
 collision_mask = 5
@@ -416,6 +428,9 @@ collision_mask = 5
 position = Vector2(-3, 10)
 scale = Vector2(2.1, 0.66)
 shape = SubResource("CircleShape2D_0rl03")
+
+[node name="metalic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_n2hqn")
 
 [connection signal="area_entered" from="vision" to="." method="_on_vision_area_entered"]
 [connection signal="body_entered" from="vision" to="." method="_on_vision_body_entered"]

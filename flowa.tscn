@@ -1,9 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://p4fkmp8qdb4d"]
+[gd_scene load_steps=22 format=3 uid="uid://p4fkmp8qdb4d"]
 
 [ext_resource type="Script" path="res://Flowa.gd" id="1_tcdkk"]
 [ext_resource type="Texture2D" uid="uid://c8ftsnr8538fr" path="res://flowa.png" id="2_xmef0"]
 [ext_resource type="Texture2D" uid="uid://dgppycqcjlwko" path="res://skull_amulet.png" id="3_roisj"]
 [ext_resource type="AudioStream" uid="uid://ryaucmsm2nin" path="res://door-lock-43124.mp3" id="4_s3aiv"]
+[ext_resource type="AudioStream" uid="uid://8rc6j36nr3yy" path="res://keys.mp3" id="5_u163r"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5k1li"]
 atlas = ExtResource("2_xmef0")
@@ -158,6 +159,9 @@ frame_progress = 0.886329
 [node name="click" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_s3aiv")
 volume_db = 6.624
+
+[node name="keys" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_u163r")
 
 [connection signal="area_entered" from="Box" to="." method="_on_box_area_entered"]
 [connection signal="body_entered" from="Box" to="." method="_on_box_body_entered"]

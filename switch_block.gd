@@ -8,16 +8,18 @@ var rng = RandomNumberGenerator.new()
 func _ready():
 	
 	if Global.level == 2:
-		$switch_col.position = Vector2(1150,1050)
-		on_shapes = _build_up(true, 1, 0,40,0)
+		$switch_col.position = Vector2(1080,1060)
+		on_shapes = _build_up(true, 3, 0,40,0)
+	elif Global.level == 6:
+		$switch_col.position = Vector2(1330,860)
 	elif Global.level == 8:
 		$switch_col.position = Vector2(1500,420)
 		on_shapes = _build_up(true, 6, -40,0,0)
 	elif Global.level == 9 or Global.level == 10:
 		$switch_col.position = Vector2(725,140)
 		$switch_col2.position = Vector2(725,140)
-		if Global.level == 9:
-			on_shapes = _build_up(true, 2, 260,0,0)
+		#if Global.level == 9:
+		on_shapes = _build_up(true, 2, 260,0,0)
 		off_shapes = _build_up(false, 1,440,0,0)
 		$switch_col2.position = Vector2(725,580)
 		var off_shapes1 = _build_up(false, 5,0,40,0)
@@ -30,15 +32,15 @@ func _ready():
 		var on_shapes1 =  _build_up(true, 3,-100,-100)
 		for shape in on_shapes1:
 			on_shapes.append(shape)
-		$switch_col2.position = Vector2(1000,1120)
-		$switch_col.position = Vector2(1200,1120)
+		#$switch_col2.position = Vector2(1000,1120)
+		#$switch_col.position = Vector2(1200,1120)
 	elif Global.level == 11:
 		$switch_col.position = Vector2(1150,1270)
 		$switch_col2.position = Vector2(1150,1150)
-		on_shapes = _build_up(true,20,-240)
-		off_shapes = _build_up(false,10,-240)
-		$switch_col2.position = Vector2(1400,190)
-		$switch_col.position = Vector2(1360,190)
+		on_shapes = _build_up(true,20,-200)
+		off_shapes = _build_up(false,10,-200)
+		$switch_col2.position = Vector2(1440,190)
+		$switch_col.position = Vector2(1400,190)
 	elif Global.level == 13:
 		$switch_col.position = Vector2(550,480)
 		$switch_col2.position = Vector2(900,480)
